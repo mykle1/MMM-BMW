@@ -37,8 +37,8 @@ doing it and I used what I learned in the module itself. Nothing monumental but 
 		config: {
 			apiKey: "YOUR API KEY GOES HERE", // Free API key @ https://www.wunderground.com
 			tempUnits: "C",		              // C of F
-            		stateOrCountry: 'NY',             // US states abbr. or other country codes
-            		city: 'New_York',                 // City, eg. New_York (with underscore - no spaces)
+            	stateOrCountry: 'NY',             // US states abbr. or other country codes
+            	city: 'New_York',                 // City, eg. New_York (with underscore - no spaces)
 			useHeader: false,                 // true if you want a header                 
 			header: "Your header",
 			maxWidth: "100%",
