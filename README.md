@@ -47,7 +47,7 @@ doing it and I used what I learned in the module itself. Nothing monumental but 
 	
 
 
-## Country codes here
+## Country codes here (If you're not in the US)
 
 https://www.wunderground.com/weather/api/d/docs?d=resources/country-to-iso-matching&MR=1
 
