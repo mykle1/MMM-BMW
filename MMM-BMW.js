@@ -7,8 +7,8 @@ Module.register("MMM-BMW", {
 
     // Module config defaults.
     defaults: {
-		apiKey: "",                               // Get FREE API key from wunderground.com
-		tempUnits: "",		                      // C  or F
+	apiKey: "",                               // Get FREE API key from wunderground.com
+	tempUnits: "",		                      // C  or F
         stateOrCountry: "NY",                     // State if in US. Country if not in US
         city: "New_York",                         // city, no spaces. Use underscore.
         useHeader: false,                         // true if you want a header      
