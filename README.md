@@ -9,9 +9,9 @@ wasn't really happy with those, although they were fun to do. This has a bit mor
 and it doesn't resemble other modules in format or appearance. I learned a couple of new things while
 doing it and I used what I learned in the module itself. Nothing monumental but very satisfying for me.
 
-## Good-bye bottom_bar
+## Good-bye bottom_bar or lower_thid
 
-* This was designed for use in the bottom_bar position of your MagicMirror
+* This was designed for use in the bottom_bar or lower_third position of your MagicMirror
 * My first real use of icons in a module, denoting the upcoming forecast
 * Weather forecast for day and night
 * Only the current weather is written out in words
@@ -33,7 +33,7 @@ doing it and I used what I learned in the module itself. Nothing monumental but 
     {
 		disabled: false,
 		module: "MMM-BMW",
-		position: "bottom_bar",               // bottom_bar is best
+		position: "bottom_bar",               // bottom_bar or lower_third is best
 		config: {
 			apiKey: "YOUR API KEY GOES HERE", // Free API key @ https://www.wunderground.com
 			tempUnits: "C",		              // C of F
