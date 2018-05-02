@@ -19,7 +19,7 @@ doing it and I used what I learned in the module itself. Nothing monumental but 
 ## Examples
 
 * lower_third position, under compliments
-![](images/1.png)
+![](images/11.png)
 
 * bottom_bar position
 ![](images/2.png)
