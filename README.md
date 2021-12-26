@@ -6,10 +6,10 @@
 * Designed for use in the `bottom_bar` or `top_bar` position of your MagicMirror.
 * Sunrise and Sunset times for the current day.
 * Weather forecast for each day and night.
-** Daily highs displayed with daytime forecast.
-** Overnight lows displayed with the nighttime forecast.
-** Short description of weather forecast.
-** Images representing the forecast.
+  * Daily highs displayed with daytime forecast.
+  * Overnight lows displayed with the nighttime forecast.
+  * Short description of weather forecast.
+  * Images representing the forecast.
 * Option to display the current weather, in words, at the top.
 
 ## Screenshot
