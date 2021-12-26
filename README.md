@@ -14,7 +14,7 @@
 
 ## Screenshot
 
-![](Screenshot 2021-12-24 102939.png)
+![](Screenshot%202021-12-24%20102939.png)
 
 ## Installation and requirements
 
