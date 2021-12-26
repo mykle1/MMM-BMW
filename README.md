@@ -1,57 +1,65 @@
-## MMM-BMW
+# MMM-wundergroundBar
 
-**Bugger My Weather**
+## Features
 
-## Same church, different pew
+* Weather forecast for today and the next 3 days, retrieved from www.wunderground.com
+* Designed for use in the `bottom_bar` or `top_bar` position of your MagicMirror.
+* Sunrise and Sunset times for the current day.
+* Weather forecast for each day and night.
+** Daily highs displayed with daytime forecast.
+** Overnight lows displayed with the nighttime forecast.
+** Short description of weather forecast.
+** Images representing the forecast.
+* Option to display the current weather, in words, at the top.
 
-I wanted to take a new approach at a weather module. Until now, I had only done WWI and WWI2 but I
-wasn't really happy with those, although they were fun to do. This has a bit more style to it (not much)
-and it doesn't resemble other modules in format or appearance. I learned a couple of new things while
-doing it and I used what I learned in the module itself. Nothing monumental but very satisfying for me.
+## Screenshot
 
-## Good-bye bottom_bar or lower_thid
-
-* This was designed for use in the bottom_bar or lower_third position of your MagicMirror
-* My first real use of icons in a module, denoting the upcoming forecast
-* Weather forecast for day and night
-* Only the current weather is written out in words
-
-## Examples
-
-* lower_third position, under compliments
-![](images/11.png)
-
-* bottom_bar position
-![](images/2.png)
+![](Screenshot 2021-12-24 102939.png)
 
 ## Installation and requirements
 
-* `git clone https://github.com/mykle1/MMM-BMW` into the `~/MagicMirror/modules` directory.
+In your terminal, go to your MagicMirror's Module folder:
+```
+cd ~/MagicMirror/modules
+```
 
-* Free API key at `https://www.wunderground.com`
+Clone this repository:
+```
+git clone https://github.com/Fifteen15Studios/MMM-wundergroundBar
+```
 
-* No dependencies needed! No kidding!
+Get your [free API key](https://www.wunderground.com)
+
+Configure the module in the `~/MagicMirror/config/config.js` file.
 
 ## Config.js entry and options
 
-    {
-		disabled: false,
-		module: "MMM-BMW",
-		position: "bottom_bar",               // bottom_bar or lower_third is best
-		config: {
-			apiKey: "YOUR API KEY GOES HERE", // Free API key @ https://www.wunderground.com
-			tempUnits: "C",		              // C of F
-            	stateOrCountry: 'NY',             // US states abbr. or other country codes
-            	city: 'New_York',                 // City, eg. New_York (with underscore - no spaces)
-			useHeader: false,                 // true if you want a header                 
-			header: "Your header",
-			maxWidth: "100%",
-		}
-	},
-	
+### Example
+```javascript
+{
+	module: "MMM-wundergroundBar",
+	position: "bottom_bar", // bottom_bar or top_bar is best
+	config: {
+		apiKey: "abcdefg123456789", // Free API key @ https://www.wunderground.com. Empty by default
+		tempUnits: "e", // e or m
+        // Default location is the statue of liberty
+		latitude: '40.6892534',
+		longitude: '-74.0466891'
+	}
+}
+```
 
-
-## Country codes here (If you're not in the US)
-
-https://www.wunderground.com/weather/api/d/docs?d=resources/country-to-iso-matching&MR=1
-
+|Option|Default|Description|
+|---|---|---|
+|`apiKey`|``|Free API key obtained from https://wunderground.com|
+|`tempUnits`|`e`|`e` for English / Imperial units (F), or `m` for Metric units (C)|
+|`latitude`|`40.6892534`|Latitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
+|`longitude`|`-74.0466891`|Longitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
+|`showCurrentText`|`true`|true if you want to show text of current weather conditions.|
+|`useHeader`|`false`|true if you want to display a custom header.|
+|`header`|`Your Header`|Custom header to dislay. `useHeader` must be true.|
+|`maxWidth`|`100%`|Max amount of the screen width to use.|
+|`animationSpeed`|`3000`|How long to animate the new data (in milliseconds).|
+|`initialLoadDelay`|`4250`|How long to delay loading initial data (in milliseconds).|
+|`retryDelay`|`2500`|How long to wait to rety when data retrieval failed  (in milliseconds).|
+|`updateInterval`|`5 * 60 * 1000`|How long to wait between data updates (in milliseconds).|
