@@ -51,7 +51,7 @@ Configure the module in the `~/MagicMirror/config/config.js` file.
 
 |Option|Default|Description|
 |---|---|---|
-|`apiKey`|``|Free API key obtained from https://wunderground.com|
+|`apiKey`| |Free API key obtained from https://wunderground.com|
 |`tempUnits`|`e`|`e` for English / Imperial units (F), or `m` for Metric units (C)|
 |`latitude`|`40.6892534`|Latitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
 |`longitude`|`-74.0466891`|Longitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
