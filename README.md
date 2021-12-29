@@ -58,6 +58,7 @@ Configure the module in the `~/MagicMirror/config/config.js` file.
 |`latitude`|`"40.6892534"`|Latitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
 |`longitude`|`"-74.0466891"`|Longitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
 |`showCurrentText`|`true`|true if you want to show text of current weather conditions.|
+|`showText`|`true`|true if you want to show text of daily weather conditions.|
 |`iconSize`|`"2%"`|Size of the images displayed with the weather. Can be a percentage, like `"1%"`, or a number, like `25`.|
 |`useHeader`|`false`|true if you want to display a custom header.|
 |`header`|`"Your Header"`|Custom header to dislay. `useHeader` must be true.|
