@@ -18,6 +18,7 @@ Module.register("MMM-wundergroundBar", {
         maxWidth: "100%",
         animationSpeed: 3000,
         iconSize: "2%",
+        showText: true,
         initialLoadDelay: 4250,
         retryDelay: 2500,
         showCurrentText: true,
@@ -37,6 +38,39 @@ Module.register("MMM-wundergroundBar", {
         this.forecast = [];
         this.scheduleUpdate();
     },
+
+    getDayHTML: function(forecast, index) {
+        const days = forecast.daypart[0].daypartName;
+		const titles = forecast.daypart[0].wxPhraseShort;
+		const iconCodes = forecast.daypart[0].iconCode;
+		for(let i = 0; i < titles.length; i++) {
+			if(titles[i] === null) {
+				titles[i] = "";
+			}
+		}
+		for(let i = 0; i < iconCodes.length; i++) {
+			if(iconCodes[i] === null) {
+				iconCodes[i] = "unknown";
+			}
+		}
+		for(let i = 0; i < days.length; i++) {
+			if(days[i] === null) {
+				days[i] = "";
+			}
+		}
+
+        var text = days[index] + ": " + forecast.calendarDayTemperatureMax[index / 2] + " ";
+        if(this.config.showText) {
+            text = text + titles[index] + " &nbsp";
+        }
+        text = text + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " + days[index+1] + ": " + forecast.calendarDayTemperatureMin[index / 2] + " ";
+        if(this.config.showText) {
+            text = text + titles[index+1] + " &nbsp";
+        }
+        text = text +  "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index+1] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">";
+
+        return text;
+},
 
     getDom: function() {
 
@@ -72,14 +106,15 @@ Module.register("MMM-wundergroundBar", {
 		}
 		
 		console.log(this.name + ": forecast.dayOfWeek: "  + forecast.dayOfWeek);  */
-        
-        
+
         // daily names and icons
         var daily = document.createElement("div");
         daily.classList.add("small", "bright", "daily");
-		var titles = forecast.daypart[0].wxPhraseShort;
+
+        var titles = forecast.daypart[0].wxPhraseShort;
 		const days = forecast.daypart[0].daypartName;
 		const iconCodes = forecast.daypart[0].iconCode;
+
 		for(let i = 0; i < titles.length; i++) {
 			if(titles[i] === null) {
 				titles[i] = "";
@@ -90,23 +125,20 @@ Module.register("MMM-wundergroundBar", {
 				iconCodes[i] = "unknown";
 			}
 		}
-		https://www.wunderground.com/static/i/c/v4/nt_clear.svg
+
 		if(this.config.showCurrentText) {
 			daily.innerHTML = "Current: " + forecast.narrative[0] + "<BR>";
 		}
 		else
 			daily.innerHTML = "";
   		daily.innerHTML = daily.innerHTML +
-						"Sunrise: " + "<img src=https://www.wunderground.com/static/i/c/v4/clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + forecast.sunriseTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
-						"Sunset: " + "<img src=https://www.wunderground.com/static/i/c/v4/nt_clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + forecast.sunsetTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
-						"Today: " + forecast.calendarDayTemperatureMax[0] + " " +titles[0] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[0] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
-						days[1] + ": " + forecast.calendarDayTemperatureMin[0] + " " +titles[1] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[1] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " <BR> " +
-                        days[2] + ": " + forecast.calendarDayTemperatureMax[1] + " " + titles[2] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[2] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
-                        days[3] + ": "+ forecast.calendarDayTemperatureMin[1] + " " + titles[3] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[3] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp" +
-                        days[4] + ": "+ forecast.calendarDayTemperatureMax[2] + " " + titles[4] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[4] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
-                        days[5] + ": "+ forecast.calendarDayTemperatureMin[2] + " " + titles[5] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[5] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
-                        days[6] + ": "+ forecast.calendarDayTemperatureMax[3] + " " + titles[6] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[6] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
-                        days[7] + ": "+ forecast.calendarDayTemperatureMin[3] + " " + titles[7] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[7] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp ";
+						"Sunrise: <img src=https://www.wunderground.com/static/i/c/v4/clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbsp" + forecast.sunriseTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
+						"Sunset: <img src=https://www.wunderground.com/static/i/c/v4/nt_clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbsp" + forecast.sunsetTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " + 
+                        "Today" + 
+                        this.getDayHTML(forecast, 0) + " <BR> " + 
+                        this.getDayHTML(forecast, 2) + " &nbsp &nbsp  &nbsp &nbsp " +
+                        this.getDayHTML(forecast, 4) + " &nbsp &nbsp  &nbsp &nbsp " +
+                        this.getDayHTML(forecast, 6) + " &nbsp &nbsp  &nbsp &nbsp ";
         wrapper.appendChild(daily);
 	
         return wrapper;
