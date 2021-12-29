@@ -12,7 +12,9 @@
   * Images representing the forecast.
 * Option to display the current weather, in words, at the top.
 
-## Screenshot
+## Screenshots
+
+![](Screenshot%202021-12-28%20194420.png)
 
 ![](Screenshot%202021-12-24%20102939.png)
 
