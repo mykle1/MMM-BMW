@@ -58,22 +58,31 @@ Module.register("MMM-wundergroundBar", {
 				days[i] = "";
 			}
 		}
-
-        var text = days[index] + ": " + forecast.calendarDayTemperatureMax[index / 2] + " ";
-        if(this.config.showText) {
+        
+        var text = "";
+        if(days[index] != "") {
+            text = days[index] + ": " + forecast.calendarDayTemperatureMax[index / 2] + " ";
+        }
+        if(this.config.showText && titles[index] != "") {
             text = text + titles[index] + " &nbsp";
         }
         
 		if(iconCodes[index] != "unknown") {
 			text = text + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">";
 		}
-		text = text + " &nbsp &nbsp  &nbsp &nbsp " + days[index+1] + ": " + forecast.calendarDayTemperatureMin[index / 2] + " ";
-        if(this.config.showText) {
+        if(days[index+1] != "") {
+		    text = text + " &nbsp &nbsp  &nbsp &nbsp " + days[index+1] + ": " + forecast.calendarDayTemperatureMin[index / 2] + " ";
+        }
+        if(this.config.showText && titles[index+1] != "") {
             text = text + titles[index+1] + " &nbsp";
         }
 		if(iconCodes[index] != "unknown") {
 			text = text +  "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index+1] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">";
 		}
+
+        if(text != "") {
+            text = text + " &nbsp &nbsp  &nbsp &nbsp ";
+        }
 
         return text;
 },
@@ -139,11 +148,11 @@ Module.register("MMM-wundergroundBar", {
 			daily.innerHTML = "";
   		daily.innerHTML = daily.innerHTML +
 						"Sunrise: <img src=https://www.wunderground.com/static/i/c/v4/clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbsp" + forecast.sunriseTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
-						"Sunset: <img src=https://www.wunderground.com/static/i/c/v4/nt_clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbsp" + forecast.sunsetTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " + 
+						"Sunset: <img src=https://www.wunderground.com/static/i/c/v4/nt_clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbsp" + forecast.sunsetTimeLocal.toString().split("T")[1].split("-")[0] + 
                         this.getDayHTML(forecast, 0) + " <BR> " + 
-                        this.getDayHTML(forecast, 2) + " &nbsp &nbsp  &nbsp &nbsp " +
-                        this.getDayHTML(forecast, 4) + " &nbsp &nbsp  &nbsp &nbsp " +
-                        this.getDayHTML(forecast, 6) + " &nbsp &nbsp  &nbsp &nbsp ";
+                        this.getDayHTML(forecast, 2) + 
+                        this.getDayHTML(forecast, 4) + 
+                        this.getDayHTML(forecast, 6);
         wrapper.appendChild(daily);
 	
         return wrapper;
@@ -153,7 +162,6 @@ Module.register("MMM-wundergroundBar", {
 
     processWeather: function(data) {
         this.forecast = data;
-//        console.log(this.forecast);
         this.loaded = true;
     },
 
