@@ -22,6 +22,7 @@ Module.register("MMM-wundergroundBar", {
         initialLoadDelay: 4250,
         retryDelay: 2500,
         showCurrentText: true,
+	language: "en-US",
         updateInterval: 5 * 60 * 1000 // 5 minutes
     },
 
@@ -33,7 +34,7 @@ Module.register("MMM-wundergroundBar", {
         Log.info("Starting module: " + this.name);
 
         //  Set locale.
-		this.url = 'https://api.weather.com/v3/wx/forecast/daily/5day?geocode=' + this.config.latitude + "," + this.config.longitude + '&units=' + this.config.tempUnits + "&language=en-US&format=json&apiKey=" + this.config.apiKey
+		this.url = 'https://api.weather.com/v3/wx/forecast/daily/5day?geocode=' + this.config.latitude + "," + this.config.longitude + '&units=' + this.config.tempUnits + "&language=" + this.config.language + "&format=json&apiKey=" + this.config.apiKey
 		console.log(this.name + ": url: " + this.url);
         this.forecast = [];
         this.scheduleUpdate();
