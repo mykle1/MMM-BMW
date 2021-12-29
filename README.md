@@ -51,14 +51,15 @@ Configure the module in the `~/MagicMirror/config/config.js` file.
 
 |Option|Default|Description|
 |---|---|---|
-|`apiKey`| |Free API key obtained from https://wunderground.com|
-|`tempUnits`|`e`|`e` for English / Imperial units (F), or `m` for Metric units (C)|
-|`latitude`|`40.6892534`|Latitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
-|`longitude`|`-74.0466891`|Longitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
+|`apiKey`|`""`|Free API key obtained from https://wunderground.com|
+|`tempUnits`|`"e"`|`"e"` for English / Imperial units (F), or `"m"` for Metric units (C)|
+|`latitude`|`"40.6892534"`|Latitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
+|`longitude`|`-"74.0466891"`|Longitude of your current location. Best obtained from a site like [Google Maps](https://maps.google.com)|
 |`showCurrentText`|`true`|true if you want to show text of current weather conditions.|
+|`iconSize`|`"2%"`|Size of the images displayed with the weather. Can be a percentage, like `"1%"`, or a number, like `25`.|
 |`useHeader`|`false`|true if you want to display a custom header.|
-|`header`|`Your Header`|Custom header to dislay. `useHeader` must be true.|
-|`maxWidth`|`100%`|Max amount of the screen width to use.|
+|`header`|`"Your Header"`|Custom header to dislay. `useHeader` must be true.|
+|`maxWidth`|`"100%"`|Max amount of the screen width to use.|
 |`animationSpeed`|`3000`|How long to animate the new data (in milliseconds).|
 |`initialLoadDelay`|`4250`|How long to delay loading initial data (in milliseconds).|
 |`retryDelay`|`2500`|How long to wait to rety when data retrieval failed  (in milliseconds).|
