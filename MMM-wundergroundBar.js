@@ -9,17 +9,18 @@ Module.register("MMM-wundergroundBar", {
 
     // Module config defaults.
     defaults: {
-		apiKey: "", // Get FREE API key from wunderground.com
-		tempUnits: "e", // e or m
+        apiKey: "", // Get FREE API key from wunderground.com
+        tempUnits: "e", // e or m
         latitude: "40.6892534",
         longitude: "-74.0466891",
-		showCurrentText: true,
         useHeader: false,
         header: "Your Header", // Any text you want. useHeader must be true
         maxWidth: "100%",
         animationSpeed: 3000,
+        iconSize: "2%",
         initialLoadDelay: 4250,
         retryDelay: 2500,
+        showCurrentText: true,
         updateInterval: 5 * 60 * 1000 // 5 minutes
     },
 
@@ -95,18 +96,17 @@ Module.register("MMM-wundergroundBar", {
 		}
 		else
 			daily.innerHTML = "";
-		// TODO: Fix images
   		daily.innerHTML = daily.innerHTML +
-						"Sunrise: " + "<img src=https://www.wunderground.com/static/i/c/v4/clear.svg width=1% height=1%>" + forecast.sunriseTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
-						"Sunset: " + "<img src=https://www.wunderground.com/static/i/c/v4/nt_clear.svg width=1% height=1%>" + forecast.sunsetTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
-						"Today: " + forecast.calendarDayTemperatureMax[0] + " " +titles[0] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[0] + ".svg width=1% height=1%>" + " &nbsp &nbsp  &nbsp &nbsp " +
-						days[1] + ": " + forecast.calendarDayTemperatureMin[0] + " " +titles[1] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[1] + ".svg width=1% height=1%>" + " <BR> " +
-                        days[2] + ": " + forecast.calendarDayTemperatureMax[1] + " " + titles[2] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[2] + ".svg width=1% height=1%>" + " &nbsp &nbsp  &nbsp &nbsp " +
-                        days[3] + ": "+ forecast.calendarDayTemperatureMin[1] + " " + titles[3] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[3] + ".svg width=1% height=1%>" + " &nbsp &nbsp  &nbsp &nbsp" +
-                        days[4] + ": "+ forecast.calendarDayTemperatureMax[2] + " " + titles[4] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[4] + ".svg width=1% height=1%>" + " &nbsp &nbsp  &nbsp &nbsp " +
-                        days[5] + ": "+ forecast.calendarDayTemperatureMin[2] + " " + titles[5] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[5] + ".svg width=1% height=1%>" + " &nbsp &nbsp  &nbsp &nbsp " +
-                        days[6] + ": "+ forecast.calendarDayTemperatureMax[3] + " " + titles[6] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[6] + ".svg width=1% height=1%>" + " &nbsp &nbsp  &nbsp &nbsp " +
-                        days[7] + ": "+ forecast.calendarDayTemperatureMin[3] + " " + titles[7] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[7] + ".svg width=1% height=1%>" + " &nbsp &nbsp  &nbsp &nbsp ";
+						"Sunrise: " + "<img src=https://www.wunderground.com/static/i/c/v4/clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + forecast.sunriseTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
+						"Sunset: " + "<img src=https://www.wunderground.com/static/i/c/v4/nt_clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + forecast.sunsetTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
+						"Today: " + forecast.calendarDayTemperatureMax[0] + " " +titles[0] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[0] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
+						days[1] + ": " + forecast.calendarDayTemperatureMin[0] + " " +titles[1] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[1] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " <BR> " +
+                        days[2] + ": " + forecast.calendarDayTemperatureMax[1] + " " + titles[2] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[2] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
+                        days[3] + ": "+ forecast.calendarDayTemperatureMin[1] + " " + titles[3] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[3] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp" +
+                        days[4] + ": "+ forecast.calendarDayTemperatureMax[2] + " " + titles[4] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[4] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
+                        days[5] + ": "+ forecast.calendarDayTemperatureMin[2] + " " + titles[5] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[5] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
+                        days[6] + ": "+ forecast.calendarDayTemperatureMax[3] + " " + titles[6] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[6] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp " +
+                        days[7] + ": "+ forecast.calendarDayTemperatureMin[3] + " " + titles[7] + " &nbsp" + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[7] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">" + " &nbsp &nbsp  &nbsp &nbsp ";
         wrapper.appendChild(daily);
 	
         return wrapper;
