@@ -2,7 +2,7 @@
 
 /* Magic Mirror
  * Module: MMM-wundergroundBar
- * By Mykle1
+ *
  * MIT Licensed
  */
 Module.register("MMM-wundergroundBar", {
@@ -68,7 +68,7 @@ Module.register("MMM-wundergroundBar", {
         }
         
 		if(iconCodes[index] != "unknown") {
-			text = text + "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">";
+			text = text + " &nbsp<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">";
 		}
         if(days[index+1] != "") {
 		    text = text + " &nbsp &nbsp  &nbsp &nbsp " + days[index+1] + ": " + forecast.calendarDayTemperatureMin[index / 2] + " ";
@@ -77,7 +77,7 @@ Module.register("MMM-wundergroundBar", {
             text = text + titles[index+1] + " &nbsp";
         }
 		if(iconCodes[index] != "unknown") {
-			text = text +  "<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index+1] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">";
+			text = text +  " &nbsp<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index+1] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">";
 		}
 
         if(text != "") {
@@ -147,8 +147,8 @@ Module.register("MMM-wundergroundBar", {
 		else
 			daily.innerHTML = "";
   		daily.innerHTML = daily.innerHTML +
-						"Sunrise: <img src=https://www.wunderground.com/static/i/c/v4/clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbsp" + forecast.sunriseTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
-						"Sunset: <img src=https://www.wunderground.com/static/i/c/v4/nt_clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbsp" + forecast.sunsetTimeLocal.toString().split("T")[1].split("-")[0] + 
+						"<img src=https://www.wunderground.com/static/i/c/v4/clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbspSunrise: &nbsp" + forecast.sunriseTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
+						"<img src=https://www.wunderground.com/static/i/c/v4/nt_clear.svg width=" + this.config.iconSize + " height=" + this.config.iconSize + "> &nbspSunset: &nbsp" + forecast.sunsetTimeLocal.toString().split("T")[1].split("-")[0] + " &nbsp &nbsp  &nbsp &nbsp " +
                         this.getDayHTML(forecast, 0) + " <BR> " + 
                         this.getDayHTML(forecast, 2) + 
                         this.getDayHTML(forecast, 4) + 
@@ -186,3 +186,4 @@ Module.register("MMM-wundergroundBar", {
         this.updateDom(time);
     },
 });
+
