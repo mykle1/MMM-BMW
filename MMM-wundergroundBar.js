@@ -80,10 +80,6 @@ Module.register("MMM-wundergroundBar", {
 			text = text +  " &nbsp<img src=https://www.wunderground.com/static/i/c/v4/" + iconCodes[index+1] + ".svg width=" + this.config.iconSize + " height=" + this.config.iconSize + ">";
 		}
 
-        if(text != "") {
-            text = text + " &nbsp &nbsp  &nbsp &nbsp ";
-        }
-
         return text;
 },
 
