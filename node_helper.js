@@ -1,14 +1,10 @@
 /* Magic Mirror
- * Module: MMM-iStoleThisWeatherModule
+ * Module: MMM-wundergroundBar
  * 
- * By Mykle1
- *
  * MIT Licensed
  */
 const NodeHelper = require('node_helper');
-const request = require('request');
-
-
+const fetch = require("node-fetch");
 
 module.exports = NodeHelper.create({
 
@@ -17,16 +13,13 @@ module.exports = NodeHelper.create({
     },
 
     getWeather: function(url) {
-        request({
-            url: url,
-            method: 'GET'
-        }, (error, response, body) => {
-            if (!error && response.statusCode == 200) {
-				var result = JSON.parse(body);
-				//	console.log(response.statusCode); // for checking
-                    this.sendSocketNotification('WEATHER_RESULT', result);
-            }
-        });
+		fetch(url).then(response => {
+			response.json().then(data => {
+				this.sendSocketNotification('WEATHER_RESULT', data);
+			})
+		}), error => {
+			console.error(this.name + ' ERROR:', error);
+		}
     },
 
     socketNotificationReceived: function(notification, payload) {
