@@ -1,4 +1,11 @@
+Accpted Pr from someone, thinking it would be fixed. Appears this person thinks you can get a free key but I don't see how that can be done
+
+# Assume this module is deprecated till further  notice
+
+
 # MMM-wundergroundBar
+
+
 
 ## Features
 
